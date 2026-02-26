@@ -1,9 +1,41 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- ── Base (shared structure) ──────────────────────────────── -->
     <style name="Base.Theme.GeoSphere" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- ── Midnight (default: dark blue + teal) ─────────────────── -->
     <style name="Theme.GeoSphere" parent="Base.Theme.GeoSphere" />
+
+    <!-- ── Ocean (deep navy + cyan) ─────────────────────────────── -->
+    <style name="Theme.GeoSphere.Ocean" parent="Base.Theme.GeoSphere">
+        <item name="colorPrimary">@color/ocean_primary</item>
+        <item name="colorPrimaryDark">@color/ocean_primary_dark</item>
+        <item name="colorAccent">@color/ocean_accent</item>
+    </style>
+
+    <!-- ── Sunset (charcoal + orange) ───────────────────────────── -->
+    <style name="Theme.GeoSphere.Sunset" parent="Base.Theme.GeoSphere">
+        <item name="colorPrimary">@color/sunset_primary</item>
+        <item name="colorPrimaryDark">@color/sunset_primary_dark</item>
+        <item name="colorAccent">@color/sunset_accent</item>
+    </style>
+
+    <!-- ── Forest (dark green + lime) ───────────────────────────── -->
+    <style name="Theme.GeoSphere.Forest" parent="Base.Theme.GeoSphere">
+        <item name="colorPrimary">@color/forest_primary</item>
+        <item name="colorPrimaryDark">@color/forest_primary_dark</item>
+        <item name="colorAccent">@color/forest_accent</item>
+    </style>
+
+    <!-- ── Royal (dark purple + gold) ───────────────────────────── -->
+    <style name="Theme.GeoSphere.Royal" parent="Base.Theme.GeoSphere">
+        <item name="colorPrimary">@color/royal_primary</item>
+        <item name="colorPrimaryDark">@color/royal_primary_dark</item>
+        <item name="colorAccent">@color/royal_accent</item>
+    </style>
+
 </resources>

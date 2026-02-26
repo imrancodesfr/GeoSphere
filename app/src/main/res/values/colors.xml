@@ -16,10 +16,31 @@
     <color name="warning">#F39C12</color>
     <color name="primary_dark_blue">#2C3E50</color>
 
-    <!-- You can add more colors as needed -->
+    <!-- Accent shades -->
     <color name="turquoise">#1ABC9C</color>
     <color name="deep_teal">#16A085</color>
     <color name="bright_yellow">#F1C40F</color>
     <color name="bold_orange">#E67E22</color>
     <color name="striking_red">#E74C3C</color>
+
+    <!-- Ocean theme: deep navy + cyan -->
+    <color name="ocean_primary">#1A3A5C</color>
+    <color name="ocean_primary_dark">#0D2540</color>
+    <color name="ocean_accent">#00BCD4</color>
+
+    <!-- Sunset theme: charcoal + orange -->
+    <color name="sunset_primary">#2D2D2D</color>
+    <color name="sunset_primary_dark">#1A1A1A</color>
+    <color name="sunset_accent">#E67E22</color>
+
+    <!-- Forest theme: dark green + lime -->
+    <color name="forest_primary">#1B3A1F</color>
+    <color name="forest_primary_dark">#0F2312</color>
+    <color name="forest_accent">#4CAF50</color>
+
+    <!-- Royal theme: dark purple + gold -->
+    <color name="royal_primary">#2D1B4E</color>
+    <color name="royal_primary_dark">#1A0F30</color>
+    <color name="royal_accent">#FFD700</color>
+
 </resources>

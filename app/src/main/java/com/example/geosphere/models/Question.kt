@@ -3,7 +3,7 @@ package com.example.geosphere.models
 data class Question(
     val id: String = "",
     val questionText: String = "",
-    val options: Map<String, String> = mapOf(), // 🔥 FIXED
+    val options: List<String> = listOf(),
     val correctOptionIndex: Int = 0,
     val explanation: String = "",
     val difficulty: String = "medium",

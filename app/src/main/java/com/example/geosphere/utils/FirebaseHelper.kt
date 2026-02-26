@@ -5,6 +5,8 @@ import com.example.geosphere.theme.ColorPalette
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FirebaseHelper {
 
@@ -142,65 +144,106 @@ class FirebaseHelper {
     // LEADERBOARD
     // ==========================
 
+    // ---- Date key helpers ----
+    private fun todayKey(): String =
+        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+    private fun thisWeekKey(): String {
+        val cal = Calendar.getInstance()
+        val week = cal.get(Calendar.WEEK_OF_YEAR)
+        val year = cal.get(Calendar.YEAR)
+        return "$year-W${week.toString().padStart(2, '0')}"
+    }
+
     suspend fun updateLeaderboard(userId: String, points: Int): Result<Boolean> {
         return try {
-            val snapshot = usersRef.child(userId).get().await()
-            val user = snapshot.getValue(User::class.java)
+            val userSnap = usersRef.child(userId).get().await()
+            val user = userSnap.getValue(User::class.java)
                 ?: return Result.failure(Exception("User not found"))
 
             val updatedUser = user.copy(
-                totalPoints = user.totalPoints + points,
+                totalPoints   = user.totalPoints + points,
                 quizzesPlayed = user.quizzesPlayed + 1,
                 correctAnswers = user.correctAnswers + points
             )
-
             usersRef.child(userId).setValue(updatedUser).await()
 
+            // Fetch existing leaderboard entry (may not exist for new users)
+            val existingEntrySnap = leaderboardRef.child(userId).get().await()
+            val existing = existingEntrySnap.getValue(LeaderboardEntry::class.java)
+
+            val today    = todayKey()
+            val thisWeek = thisWeekKey()
+
+            // Reset daily score if day changed
+            val dailyPoints = if (existing?.dailyKey == today) {
+                (existing.dailyPoints) + points
+            } else {
+                points  // new day — start fresh
+            }
+
+            // Reset weekly score if week changed
+            val weeklyPoints = if (existing?.weeklyKey == thisWeek) {
+                (existing.weeklyPoints) + points
+            } else {
+                points  // new week — start fresh
+            }
+
             val entry = LeaderboardEntry(
-                userId = userId,
-                username = user.username,
-                totalPoints = updatedUser.totalPoints,
+                userId        = userId,
+                username      = user.username,
+                totalPoints   = updatedUser.totalPoints,
                 quizzesPlayed = updatedUser.quizzesPlayed,
                 correctAnswers = updatedUser.correctAnswers,
-                lastUpdated = System.currentTimeMillis()
+                lastUpdated   = System.currentTimeMillis(),
+                dailyPoints   = dailyPoints,
+                dailyKey      = today,
+                weeklyPoints  = weeklyPoints,
+                weeklyKey     = thisWeek
             )
-
             leaderboardRef.child(userId).setValue(entry).await()
 
             Result.success(true)
-
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
-    suspend fun getLeaderboard(): Result<List<LeaderboardEntry>> {
+    /**
+     * @param type "all" | "daily" | "weekly"
+     */
+    suspend fun getLeaderboardByType(type: String = "all"): Result<List<LeaderboardEntry>> {
         return try {
-            val snapshot = leaderboardRef
-                .orderByChild("totalPoints")
-                .limitToLast(100)
-                .get()
-                .await()
-
+            val snapshot = leaderboardRef.get().await()
             val list = mutableListOf<LeaderboardEntry>()
 
             for (child in snapshot.children) {
-                val entry = child.getValue(LeaderboardEntry::class.java)
-                entry?.let { list.add(it) }
+                val entry = child.getValue(LeaderboardEntry::class.java) ?: continue
+                list.add(entry)
             }
 
-            list.sortByDescending { it.totalPoints }
+            val today    = todayKey()
+            val thisWeek = thisWeekKey()
 
-            val ranked = list.mapIndexed { index, item ->
-                item.copy(rank = index + 1)
+            val sorted = when (type) {
+                "daily"  -> list
+                    .filter { it.dailyKey == today && it.dailyPoints > 0 }
+                    .sortedByDescending { it.dailyPoints }
+                "weekly" -> list
+                    .filter { it.weeklyKey == thisWeek && it.weeklyPoints > 0 }
+                    .sortedByDescending { it.weeklyPoints }
+                else     -> list.sortedByDescending { it.totalPoints }   // "all"
             }
 
+            val ranked = sorted.mapIndexed { index, item -> item.copy(rank = index + 1) }
             Result.success(ranked)
-
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
+
+    // Keep old method for backward compat
+    suspend fun getLeaderboard(): Result<List<LeaderboardEntry>> = getLeaderboardByType("all")
 
     // ==========================
     // USER ANSWERS
@@ -235,42 +278,78 @@ class FirebaseHelper {
     }
 
     // ==========================
-    // ACHIEVEMENTS
+    // ACHIEVEMENTS (Milestone-based)
     // ==========================
 
+    /**
+     * Checks local milestone achievements based on cumulative correct answers.
+     * Returns newly unlocked AchievementMilestone items (as Achievement objects for compatibility).
+     */
     suspend fun checkAndAwardAchievements(
         userId: String,
         category: String,
         score: Int
     ): Result<List<Achievement>> {
-
         return try {
             val userSnapshot = usersRef.child(userId).get().await()
             val user = userSnapshot.getValue(User::class.java)
                 ?: return Result.failure(Exception("User not found"))
 
-            val achievementSnapshot = achievementsRef.child(category).get().await()
+            // Total correct answers AFTER this quiz (already updated by updateLeaderboard)
+            val totalCorrect = user.correctAnswers
+            val earnedIds    = user.achievements.toMutableList()
 
-            val newAchievements = mutableListOf<Achievement>()
-            val updated = user.achievements.toMutableList()
-
-            for (child in achievementSnapshot.children) {
-                val achievement = child.getValue(Achievement::class.java)
-
-                achievement?.let {
-                    if (score >= it.requiredScore && !updated.contains(it.id)) {
-                        updated.add(it.id)
-                        newAchievements.add(it)
-                    }
-                }
+            // Find newly unlocked milestones
+            val newlyUnlocked = AchievementMilestones.ALL.filter { milestone ->
+                milestone.requiredCorrect <= totalCorrect && !earnedIds.contains(milestone.id)
             }
 
-            if (newAchievements.isNotEmpty()) {
-                usersRef.child(userId).child("achievements").setValue(updated).await()
+            if (newlyUnlocked.isNotEmpty()) {
+                // Save new IDs to Firebase
+                newlyUnlocked.forEach { earnedIds.add(it.id) }
+                usersRef.child(userId).child("achievements").setValue(earnedIds).await()
             }
 
-            Result.success(newAchievements)
+            // Convert AchievementMilestone → Achievement for result screen
+            val result = newlyUnlocked.map { m ->
+                Achievement(
+                    id           = m.id,
+                    name         = "${m.emoji} ${m.name}",
+                    description  = m.description,
+                    requiredScore = m.requiredCorrect
+                )
+            }
+            Result.success(result)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 
+    /**
+     * Returns all milestones earned by this user (based on correctAnswers in User model).
+     */
+    suspend fun getUserAchievements(userId: String): Result<List<AchievementMilestone>> {
+        return try {
+            val userSnapshot = usersRef.child(userId).get().await()
+            val user = userSnapshot.getValue(User::class.java)
+                ?: return Result.failure(Exception("User not found"))
+            Result.success(AchievementMilestones.getEarned(user.correctAnswers))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    /**
+     * Returns ALL milestones with earned/locked status for the profile page.
+     */
+    suspend fun getAllMilestonesWithStatus(
+        userId: String
+    ): Result<Pair<List<AchievementMilestone>, Int>> {
+        return try {
+            val userSnapshot = usersRef.child(userId).get().await()
+            val user = userSnapshot.getValue(User::class.java)
+                ?: return Result.failure(Exception("User not found"))
+            Result.success(Pair(AchievementMilestones.ALL, user.correctAnswers))
         } catch (e: Exception) {
             Result.failure(e)
         }

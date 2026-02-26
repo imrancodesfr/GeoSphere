@@ -38,6 +38,8 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var timer: CountDownTimer
     private var timeLeft = Constants.TIME_PER_QUESTION * 1000L
     private var isTimerRunning = false
+    // Tracks whether answer has already been submitted for the current question
+    private var answerSubmitted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,7 +101,7 @@ class QuizActivity : AppCompatActivity() {
                     // Shuffle questions
                     questions.shuffle()
 
-                    // Take only 20 questions or all if less
+                    // Take only DEFAULT_QUESTIONS_PER_QUIZ or all if less
                     if (questions.size > Constants.DEFAULT_QUESTIONS_PER_QUIZ) {
                         questions = questions.subList(0, Constants.DEFAULT_QUESTIONS_PER_QUIZ).toMutableList()
                     }
@@ -140,10 +142,18 @@ class QuizActivity : AppCompatActivity() {
 
         // Reset UI state
         selectedOptionIndex = -1
+        answerSubmitted = false
         resetOptionStyles()
+
+        // Re-enable all option buttons for the new question
+        setOptionsEnabled(true)
+
         binding.btnSubmit.isEnabled = true
         binding.btnSubmit.visibility = View.VISIBLE
         binding.btnNext.visibility = View.GONE
+
+        // Reset timer text color
+        binding.tvTimer.setTextColor(resources.getColor(android.R.color.white, null))
 
         // Update progress
         updateProgress()
@@ -153,6 +163,8 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun onOptionSelected(index: Int) {
+        // Prevent changing selection after submitting
+        if (answerSubmitted) return
         selectedOptionIndex = index
         updateOptionStyles()
     }
@@ -175,13 +187,24 @@ class QuizActivity : AppCompatActivity() {
         binding.btnOption4.setBackgroundResource(R.drawable.bg_option_normal)
     }
 
+    private fun setOptionsEnabled(enabled: Boolean) {
+        binding.btnOption1.isEnabled = enabled
+        binding.btnOption2.isEnabled = enabled
+        binding.btnOption3.isEnabled = enabled
+        binding.btnOption4.isEnabled = enabled
+    }
+
     private fun submitAnswer() {
+        if (answerSubmitted) return // Prevent double-submit
+
         if (selectedOptionIndex == -1) {
             Toast.makeText(this, getString(R.string.please_select_answer), Toast.LENGTH_SHORT).show()
             return
         }
 
+        answerSubmitted = true
         stopTimer()
+        setOptionsEnabled(false) // Lock options after submit
 
         val currentQuestion = questions[currentQuestionIndex]
         val isCorrect = selectedOptionIndex == currentQuestion.correctOptionIndex
@@ -196,11 +219,32 @@ class QuizActivity : AppCompatActivity() {
             animateWrongAnswer()
         }
 
-        // Disable options and submit button
+        // Disable submit button, show next button
         binding.btnSubmit.isEnabled = false
         binding.btnNext.visibility = View.VISIBLE
 
         // Animate next button
+        binding.btnNext.alpha = 0f
+        binding.btnNext.animate()
+            .alpha(1f)
+            .setDuration(500)
+            .start()
+    }
+
+    /** Called when timer runs out — marks question as wrong and advances */
+    private fun onTimeUp() {
+        if (answerSubmitted) return // Already answered manually
+
+        answerSubmitted = true
+        setOptionsEnabled(false)
+
+        // Highlight correct answer in green so user can learn
+        highlightCorrectAnswer()
+
+        // Disable submit, show next
+        binding.btnSubmit.isEnabled = false
+        binding.btnNext.visibility = View.VISIBLE
+
         binding.btnNext.alpha = 0f
         binding.btnNext.animate()
             .alpha(1f)
@@ -298,12 +342,13 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun startTimer() {
+        stopTimer() // Cancel any existing timer before starting a new one
+
         timer = object : CountDownTimer(Constants.TIME_PER_QUESTION * 1000L, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timeLeft = millisUntilFinished
                 val seconds = (millisUntilFinished / 1000).toInt()
-                // Only update if view exists
-                binding.progressTimer?.progress = seconds  // Add safe call
+                binding.progressTimer.progress = seconds
                 binding.tvTimer.text = getString(R.string.time_format, seconds)
 
                 if (seconds <= 5) {
@@ -316,10 +361,8 @@ class QuizActivity : AppCompatActivity() {
                 binding.tvTimer.text = getString(R.string.times_up)
                 binding.tvTimer.setTextColor(resources.getColor(android.R.color.holo_red_dark, null))
 
-                // Auto-submit if no answer selected
-                if (selectedOptionIndex == -1 && binding.btnSubmit.isEnabled) {
-                    submitAnswer()
-                }
+                // Auto-advance on timeout — does NOT call submitAnswer() to avoid toast loop
+                onTimeUp()
             }
         }
 
