@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeoSphere</string>
+    <string name="tagline">Explore the World</string>
+
+    <!-- Placeholders -->
+    <string name="icon_placeholder">🌏</string>
+    <string name="category_name_placeholder">Category Name</string>
+    <string name="description_placeholder">Category Description</string>
+    <string name="question_count_placeholder">100 questions</string>
+
+    <!-- Formatted strings - add formatted="false" -->
+    <string name="score_format" formatted="false">%d/%d</string>
+    <string name="percentage_format" formatted="false">%d%%</string>
+    <string name="question_count_format" formatted="false">%d questions</string>
+    <string name="time_format" formatted="false">%d seconds</string>
+    <string name="question_format" formatted="false">Question %d/%d</string>
+
+    <!-- Button texts -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logout">Logout</string>
+    <string name="submit">Submit Answer</string>
+    <string name="next">Next Question</string>
+    <string name="play_again">Play Again</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="share">Share Result</string>
+
+    <!-- Quiz messages -->
+    <string name="times_up">Time\'s up!</string>
+
+    <!-- Result messages -->
+    <string name="perfect">Perfect! You\'re a geography master! 🌟</string>
+    <string name="excellent">Excellent! Great knowledge! 🎉</string>
+    <string name="good_effort">Good effort! Keep learning! 📚</string>
+    <string name="not_bad">Not bad! Practice makes perfect! 💪</string>
+    <string name="keep_exploring">Keep exploring the world! 🌍</string>
+    <string name="quiz_completed">Quiz Completed!</string>
+    <string name="congratulations">Congratulations!</string>
+
+    <!-- Achievements -->
+    <string name="achievements_unlocked">Achievements Unlocked!</string>
+    <string name="master_of_asia">Master of Asia</string>
+    <string name="conqueror_of_europe">Conqueror of Europe</string>
+    <string name="flag_expert">Flag Expert</string>
+    <string name="world_traveler">World Traveler</string>
+    <string name="perfect_score">Perfect Score</string>
+
+    <!-- Category names -->
+    <string name="asia">Asia</string>
+    <string name="europe">Europe</string>
+    <string name="americas">Americas</string>
+    <string name="africa">Africa</string>
+    <string name="flags">Flags</string>
+    <string name="capitals">Capitals</string>
+    <string name="landmarks">Landmarks</string>
+    <string name="world">World</string>
+
+    <!-- Category descriptions -->
+    <string name="asia_desc">Test your knowledge about the largest continent</string>
+    <string name="europe_desc">Explore the diverse cultures and countries of Europe</string>
+    <string name="americas_desc">From North to South America</string>
+    <string name="africa_desc">Discover the cradle of humanity</string>
+    <string name="flags_desc">Identify flags from around the world</string>
+    <string name="capitals_desc">Test your knowledge of world capitals</string>
+    <string name="landmarks_desc">Famous landmarks and their locations</string>
+    <string name="world_desc">Mixed questions from around the globe</string>
+
+    <!-- Error messages -->
+    <string name="error_loading_questions">Failed to load questions</string>
+    <string name="no_questions_available">No questions available</string>
+    <string name="please_select_answer">Please select an answer</string>
+    <string name="email_required">Email required</string>
+    <string name="password_required">Password required</string>
+    <string name="username_required">Username required</string>
+    <string name="password_min_length">Password must be at least 6 characters</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="login_failed">Login failed: %s</string>
+    <string name="registration_failed">Registration failed: %s</string>
+    <string name="registration_successful">Registration successful!</string>
+
+    <!-- Share text -->
+    <string name="share_text">I scored %1$d/%2$d in %3$s on GeoSphere! Can you beat my score? 🌍</string>
+    <string name="share_app_text">Check out GeoSphere - The ultimate geography quiz app!</string>
+
+    <!-- Settings -->
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="sound_effects">Sound Effects</string>
+    <string name="animations">Animations</string>
+    <string name="question_timer">Question Timer</string>
+    <string name="questions_per_quiz">Questions per Quiz</string>
+
+    <!-- Admin -->
+    <string name="admin_login">Admin Login</string>
+    <string name="add_question">Add Question</string>
+    <string name="edit_question">Edit Question</string>
+    <string name="delete_question">Delete Question</string>
+    <string name="manage_categories">Manage Categories</string>
+    <string name="view_reports">View Reports</string>
+    <!-- Add these to your strings.xml -->
+    <string name="question_placeholder">Question 1/20</string>
+    <string name="timer_placeholder">30 seconds</string>
+    <string name="question_placeholder_text">What is the capital of France?</string>
+    <string name="option_placeholder">Option</string>
+    <string name="correct_answer_description">Correct answer indicator</string>
+    <string name="wrong_answer_description">Wrong answer indicator</string>
+    <string name="category_details">Category Details</string>
+    <string name="coming_soon">Coming Soon!</string>
+    <string name="achievements">Achievements</string>
+    <string name="settings">Settings</string>
+    <!-- Add these strings -->
+    <string name="app_logo_description">App Logo</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <!-- Add these to your strings.xml -->
+    <string name="option_a">Option A</string>
+    <string name="option_b">Option B</string>
+    <string name="option_c">Option C</string>
+    <string name="option_d">Option D</string>
+    <string name="error_format">Error: %s</string>
+    <!-- Add these to strings.xml if not already present -->
+    <string name="rotating_globe_description">Rotating Globe</string>
+    <string name="dont_have_account">Don\'t have an account? </string>
+    <!-- Navigation drawer strings -->
+    <string name="nav_home">Home</string>
+    <string name="nav_leaderboard">Leaderboard</string>
+    <string name="nav_achievements">Achievements</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_share">Share App</string>
+    <string name="nav_logout">Logout</string>
+    <!-- Add these missing strings -->
+    <string name="default_username">Guest User</string>
+    <string name="default_email">guest@geosphere.com</string>
+    <string name="share_via">Share via</string>
+    <string name="app_logo">Application Logo</string>
+    <string name="globe_animation">Rotating Globe Animation</string>
+</resources>
