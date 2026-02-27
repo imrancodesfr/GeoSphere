@@ -11,7 +11,13 @@ import java.util.*
 class FirebaseHelper {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+    // Explicit URL required — google-services.json in this project has no firebase_url field
+    // Replace this URL with your actual Firebase Realtime Database URL from:
+    // Firebase Console → Realtime Database → copy the URL shown at the top (ends with firebaseio.com)
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance(
+        "https://geosphere-8089b-default-rtdb.firebaseio.com"
+    ).also { it.setPersistenceEnabled(true) }
 
     // References
     private val usersRef = database.getReference("users")

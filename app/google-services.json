@@ -2,7 +2,8 @@
   "project_info": {
     "project_number": "684070803316",
     "project_id": "geosphere-8089b",
-    "storage_bucket": "geosphere-8089b.firebasestorage.app"
+    "storage_bucket": "geosphere-8089b.firebasestorage.app",
+    "firebase_url": "https://geosphere-8089b-default-rtdb.firebaseio.com"
   },
   "client": [
     {
