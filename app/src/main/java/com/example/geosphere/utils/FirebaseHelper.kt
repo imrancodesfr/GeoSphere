@@ -12,13 +12,6 @@ class FirebaseHelper {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    // Explicit URL required — google-services.json in this project has no firebase_url field
-    // Replace this URL with your actual Firebase Realtime Database URL from:
-    // Firebase Console → Realtime Database → copy the URL shown at the top (ends with firebaseio.com)
-    private val database: FirebaseDatabase = FirebaseDatabase.getInstance(
-        "https://geosphere-8089b-default-rtdb.firebaseio.com"
-    ).also { it.setPersistenceEnabled(true) }
-
     // References
     private val usersRef = database.getReference("users")
     private val questionsRef = database.getReference("questions")
@@ -26,6 +19,19 @@ class FirebaseHelper {
     private val leaderboardRef = database.getReference("leaderboard")
     private val achievementsRef = database.getReference("achievements")
     private val userAnswersRef = database.getReference("user_answers")
+
+    companion object {
+        // Explicit URL required — google-services.json in this project has no firebase_url field
+        private val database: FirebaseDatabase by lazy {
+            val db = FirebaseDatabase.getInstance("https://geosphere-8089b-default-rtdb.firebaseio.com")
+            try {
+                db.setPersistenceEnabled(true)
+            } catch (e: Exception) {
+                // Persistence already modified/enabled
+            }
+            db
+        }
+    }
 
     // ==========================
     // AUTHENTICATION
