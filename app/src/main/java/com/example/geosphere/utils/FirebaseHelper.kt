@@ -64,8 +64,24 @@ class FirebaseHelper(private val context: Context) {
 
     // Helper for internal use to get local user profile
     private fun getLocalUser(userId: String): User? {
-        val json = prefs.getString("user_profile_$userId", null) ?: return null
-        return gson.fromJson(json, User::class.java)
+        val json = prefs.getString("user_profile_$userId", null)
+        if (json != null) {
+            return gson.fromJson(json, User::class.java)
+        }
+        
+        // Auto-create local profile for existing Firebase Auth users
+        val currentUser = auth.currentUser
+        if (currentUser != null && currentUser.uid == userId) {
+            val newUser = User(
+                uid = currentUser.uid,
+                email = currentUser.email ?: "user@geosphere.com",
+                username = currentUser.displayName ?: "Explorer",
+                createdAt = System.currentTimeMillis()
+            )
+            saveLocalUser(newUser)
+            return newUser
+        }
+        return null
     }
 
     private fun saveLocalUser(user: User) {
