@@ -26,7 +26,7 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        firebaseHelper = FirebaseHelper()
+        firebaseHelper = FirebaseHelper(this)
 
         setupClickListeners()
         startAnimations()

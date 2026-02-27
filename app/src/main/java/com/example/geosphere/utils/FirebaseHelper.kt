@@ -1,40 +1,28 @@
 package com.example.geosphere.utils
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.example.geosphere.models.*
 import com.example.geosphere.theme.ColorPalette
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FirebaseHelper {
+class FirebaseHelper(private val context: Context) {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    // References
-    private val usersRef = database.getReference("users")
-    private val questionsRef = database.getReference("questions")
-    private val categoriesRef = database.getReference("categories")
-    private val leaderboardRef = database.getReference("leaderboard")
-    private val achievementsRef = database.getReference("achievements")
-    private val userAnswersRef = database.getReference("user_answers")
-
-    companion object {
-        // Explicit URL required — google-services.json in this project has no firebase_url field
-        private val database: FirebaseDatabase by lazy {
-            val db = FirebaseDatabase.getInstance("https://geosphere-8089b-default-rtdb.firebaseio.com")
-            try {
-                db.setPersistenceEnabled(true)
-            } catch (e: Exception) {
-                // Persistence already modified/enabled
-            }
-            db
-        }
-    }
+    private val prefs: SharedPreferences = context.getSharedPreferences("GeoSphereLocalDb", Context.MODE_PRIVATE)
+    private val gson = Gson()
 
     // ==========================
-    // AUTHENTICATION
+    // AUTHENTICATION (Firebase Auth + Local Profile)
     // ==========================
 
     suspend fun registerUser(email: String, password: String, username: String): Result<User> {
@@ -49,7 +37,8 @@ class FirebaseHelper {
                 createdAt = System.currentTimeMillis()
             )
 
-            usersRef.child(userId).setValue(user).await()
+            // Save user profile locally instead of Firebase DB
+            prefs.edit().putString("user_profile_$userId", gson.toJson(user)).apply()
             Result.success(user)
 
         } catch (e: Exception) {
@@ -62,10 +51,10 @@ class FirebaseHelper {
             val authResult = auth.signInWithEmailAndPassword(email, password).await()
             val userId = authResult.user?.uid ?: throw Exception("Login failed")
 
-            val snapshot = usersRef.child(userId).get().await()
-            val user = snapshot.getValue(User::class.java)
-                ?: throw Exception("User not found")
+            val userJson = prefs.getString("user_profile_$userId", null)
+                ?: throw Exception("User profile not found locally")
 
+            val user = gson.fromJson(userJson, User::class.java)
             Result.success(user)
 
         } catch (e: Exception) {
@@ -73,93 +62,84 @@ class FirebaseHelper {
         }
     }
 
+    // Helper for internal use to get local user profile
+    private fun getLocalUser(userId: String): User? {
+        val json = prefs.getString("user_profile_$userId", null) ?: return null
+        return gson.fromJson(json, User::class.java)
+    }
+
+    private fun saveLocalUser(user: User) {
+        prefs.edit().putString("user_profile_${user.uid}", gson.toJson(user)).apply()
+    }
+
     // ==========================
-    // QUESTIONS (🔥 FIXED)
+    // QUESTIONS (From local assets JSON)
     // ==========================
 
     suspend fun getQuestionsByCategory(category: String): Result<List<Question>> {
-        return try {
-            val snapshot = questionsRef.child(category).get().await()
+        return withContext(Dispatchers.IO) {
+            try {
+                // Read from local assets JSON instead of Firebase
+                val inputStream: InputStream = context.assets.open("questions.json")
+                val jsonString = inputStream.bufferedReader().use { it.readText() }
+                
+                val rootObject = JSONObject(jsonString)
+                if (!rootObject.has("questions")) return@withContext Result.success(emptyList())
+                
+                val categoriesObj = rootObject.getJSONObject("questions")
+                if (!categoriesObj.has(category)) return@withContext Result.success(emptyList())
 
-            if (!snapshot.exists()) {
-                return Result.success(emptyList())
+                val categoryObj = categoriesObj.getJSONObject(category)
+                val questions = mutableListOf<Question>()
+
+                val keys = categoryObj.keys()
+                while (keys.hasNext()) {
+                    val qId = keys.next()
+                    val qObj = categoryObj.getJSONObject(qId)
+
+                    val questionText = qObj.optString("questionText", "")
+                    val correctIndex = qObj.optInt("correctOptionIndex", 0)
+                    val explanation = qObj.optString("explanation", "")
+                    val difficulty = qObj.optString("difficulty", "medium")
+                    val points = qObj.optInt("points", 1)
+
+                    val optionsList = mutableListOf<String>()
+                    if (qObj.has("options")) {
+                        val optObj = qObj.getJSONObject("options")
+                        // Ensure we extract options 0 to 3 in order
+                        for (i in 0..3) {
+                            if (optObj.has(i.toString())) {
+                                optionsList.add(optObj.getString(i.toString()))
+                            }
+                        }
+                    }
+
+                    questions.add(
+                        Question(
+                            id = qId,
+                            questionText = questionText,
+                            options = optionsList,
+                            correctOptionIndex = correctIndex,
+                            explanation = explanation,
+                            difficulty = difficulty,
+                            points = points
+                        )
+                    )
+                }
+
+                questions.shuffle()
+                Result.success(questions)
+            } catch (e: Exception) {
+                Result.failure(e)
             }
-
-            val questions = mutableListOf<Question>()
-
-            for (child in snapshot.children) {
-
-                // Read raw map safely
-                val map = child.value as? Map<*, *> ?: continue
-
-                val questionText = map["questionText"] as? String ?: ""
-                val correctIndex = (map["correctOptionIndex"] as? Long)?.toInt() ?: 0
-                val explanation = map["explanation"] as? String ?: ""
-                val difficulty = map["difficulty"] as? String ?: "medium"
-                val points = (map["points"] as? Long)?.toInt() ?: 1
-
-                // 🔥 FIX: Handle options as Map → List
-                val optionsMap = map["options"] as? Map<*, *> ?: emptyMap<Any, Any>()
-
-                val optionsList = optionsMap
-                    .toSortedMap(compareBy { it.toString() }) // ensures 0,1,2,3 order
-                    .values
-                    .map { it.toString() }
-
-                val question = Question(
-                    id = child.key ?: "",
-                    questionText = questionText,
-                    options = optionsList,
-                    correctOptionIndex = correctIndex,
-                    explanation = explanation,
-                    difficulty = difficulty,
-                    points = points
-                )
-
-                questions.add(question)
-            }
-
-            questions.shuffle()
-
-            Result.success(questions)
-
-        } catch (e: Exception) {
-            Result.failure(e)
         }
     }
 
     // ==========================
-    // USER
+    // LEADERBOARD (Local SharedPreferences)
     // ==========================
 
-    suspend fun createUser(user: User): Result<Boolean> {
-        return try {
-            usersRef.child(user.uid).setValue(user).await()
-            Result.success(true)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    suspend fun addQuestion(category: String, question: Question): Result<Boolean> {
-        return try {
-            val ref = questionsRef.child(category).push()
-            val questionWithId = question.copy(id = ref.key ?: "")
-            ref.setValue(questionWithId).await()
-            Result.success(true)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
-    // ==========================
-    // LEADERBOARD
-    // ==========================
-
-    // ---- Date key helpers ----
-    private fun todayKey(): String =
-        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-
+    private fun todayKey(): String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
     private fun thisWeekKey(): String {
         val cal = Calendar.getInstance()
         val week = cal.get(Calendar.WEEK_OF_YEAR)
@@ -169,82 +149,69 @@ class FirebaseHelper {
 
     suspend fun updateLeaderboard(userId: String, points: Int): Result<Boolean> {
         return try {
-            val userSnap = usersRef.child(userId).get().await()
-            val user = userSnap.getValue(User::class.java)
-                ?: return Result.failure(Exception("User not found"))
+            val user = getLocalUser(userId) ?: return Result.failure(Exception("Local User missing"))
 
             val updatedUser = user.copy(
-                totalPoints   = user.totalPoints + points,
+                totalPoints = user.totalPoints + points,
                 quizzesPlayed = user.quizzesPlayed + 1,
                 correctAnswers = user.correctAnswers + points
             )
-            usersRef.child(userId).setValue(updatedUser).await()
+            saveLocalUser(updatedUser)
 
-            // Fetch existing leaderboard entry (may not exist for new users)
-            val existingEntrySnap = leaderboardRef.child(userId).get().await()
-            val existing = existingEntrySnap.getValue(LeaderboardEntry::class.java)
+            // Read all leaderboard entries
+            val type = object : TypeToken<MutableList<LeaderboardEntry>>() {}.type
+            val leaderboardJson = prefs.getString("local_leaderboard", "[]")
+            val allEntries: MutableList<LeaderboardEntry> = gson.fromJson(leaderboardJson, type)
 
-            val today    = todayKey()
+            // Find existing
+            val existingIndex = allEntries.indexOfFirst { it.userId == userId }
+            val existing = if (existingIndex >= 0) allEntries[existingIndex] else null
+
+            val today = todayKey()
             val thisWeek = thisWeekKey()
 
-            // Reset daily score if day changed
-            val dailyPoints = if (existing?.dailyKey == today) {
-                (existing.dailyPoints) + points
-            } else {
-                points  // new day — start fresh
-            }
-
-            // Reset weekly score if week changed
-            val weeklyPoints = if (existing?.weeklyKey == thisWeek) {
-                (existing.weeklyPoints) + points
-            } else {
-                points  // new week — start fresh
-            }
+            val dailyPoints = if (existing?.dailyKey == today) existing.dailyPoints + points else points
+            val weeklyPoints = if (existing?.weeklyKey == thisWeek) existing.weeklyPoints + points else points
 
             val entry = LeaderboardEntry(
-                userId        = userId,
-                username      = user.username,
-                totalPoints   = updatedUser.totalPoints,
+                userId = userId,
+                username = user.username,
+                totalPoints = updatedUser.totalPoints,
                 quizzesPlayed = updatedUser.quizzesPlayed,
                 correctAnswers = updatedUser.correctAnswers,
-                lastUpdated   = System.currentTimeMillis(),
-                dailyPoints   = dailyPoints,
-                dailyKey      = today,
-                weeklyPoints  = weeklyPoints,
-                weeklyKey     = thisWeek
+                lastUpdated = System.currentTimeMillis(),
+                dailyPoints = dailyPoints,
+                dailyKey = today,
+                weeklyPoints = weeklyPoints,
+                weeklyKey = thisWeek
             )
-            leaderboardRef.child(userId).setValue(entry).await()
 
+            if (existingIndex >= 0) {
+                allEntries[existingIndex] = entry
+            } else {
+                allEntries.add(entry)
+            }
+
+            prefs.edit().putString("local_leaderboard", gson.toJson(allEntries)).apply()
             Result.success(true)
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
-    /**
-     * @param type "all" | "daily" | "weekly"
-     */
-    suspend fun getLeaderboardByType(type: String = "all"): Result<List<LeaderboardEntry>> {
+    suspend fun getLeaderboardByType(filterType: String = "all"): Result<List<LeaderboardEntry>> {
         return try {
-            val snapshot = leaderboardRef.get().await()
-            val list = mutableListOf<LeaderboardEntry>()
+            val type = object : TypeToken<List<LeaderboardEntry>>() {}.type
+            val leaderboardJson = prefs.getString("local_leaderboard", "[]")
+            val list: List<LeaderboardEntry> = gson.fromJson(leaderboardJson, type)
 
-            for (child in snapshot.children) {
-                val entry = child.getValue(LeaderboardEntry::class.java) ?: continue
-                list.add(entry)
-            }
-
-            val today    = todayKey()
+            val today = todayKey()
             val thisWeek = thisWeekKey()
 
-            val sorted = when (type) {
-                "daily"  -> list
-                    .filter { it.dailyKey == today && it.dailyPoints > 0 }
-                    .sortedByDescending { it.dailyPoints }
-                "weekly" -> list
-                    .filter { it.weeklyKey == thisWeek && it.weeklyPoints > 0 }
-                    .sortedByDescending { it.weeklyPoints }
-                else     -> list.sortedByDescending { it.totalPoints }   // "all"
+            val sorted = when (filterType) {
+                "daily" -> list.filter { it.dailyKey == today && it.dailyPoints > 0 }.sortedByDescending { it.dailyPoints }
+                "weekly" -> list.filter { it.weeklyKey == thisWeek && it.weeklyPoints > 0 }.sortedByDescending { it.weeklyPoints }
+                else -> list.sortedByDescending { it.totalPoints }
             }
 
             val ranked = sorted.mapIndexed { index, item -> item.copy(rank = index + 1) }
@@ -254,7 +221,6 @@ class FirebaseHelper {
         }
     }
 
-    // Keep old method for backward compat
     suspend fun getLeaderboard(): Result<List<LeaderboardEntry>> = getLeaderboardByType("all")
 
     // ==========================
@@ -262,74 +228,35 @@ class FirebaseHelper {
     // ==========================
 
     suspend fun hasUserAnsweredQuestion(userId: String, questionId: String): Boolean {
-        return try {
-            userAnswersRef.child(userId).child(questionId).get().await().exists()
-        } catch (e: Exception) {
-            false
-        }
+        return prefs.getBoolean("answered_${userId}_${questionId}", false)
     }
 
-    suspend fun recordUserAnswer(
-        userId: String,
-        questionId: String,
-        isCorrect: Boolean
-    ): Result<Boolean> {
-        return try {
-            val data = mapOf(
-                "questionId" to questionId,
-                "isCorrect" to isCorrect,
-                "timestamp" to System.currentTimeMillis()
-            )
-
-            userAnswersRef.child(userId).child(questionId).setValue(data).await()
-            Result.success(true)
-
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+    suspend fun recordUserAnswer(userId: String, questionId: String, isCorrect: Boolean): Result<Boolean> {
+        prefs.edit().putBoolean("answered_${userId}_${questionId}", true).apply()
+        return Result.success(true)
     }
 
     // ==========================
-    // ACHIEVEMENTS (Milestone-based)
+    // ACHIEVEMENTS
     // ==========================
 
-    /**
-     * Checks local milestone achievements based on cumulative correct answers.
-     * Returns newly unlocked AchievementMilestone items (as Achievement objects for compatibility).
-     */
-    suspend fun checkAndAwardAchievements(
-        userId: String,
-        category: String,
-        score: Int
-    ): Result<List<Achievement>> {
+    suspend fun checkAndAwardAchievements(userId: String, category: String, score: Int): Result<List<Achievement>> {
         return try {
-            val userSnapshot = usersRef.child(userId).get().await()
-            val user = userSnapshot.getValue(User::class.java)
-                ?: return Result.failure(Exception("User not found"))
-
-            // Total correct answers AFTER this quiz (already updated by updateLeaderboard)
+            val user = getLocalUser(userId) ?: return Result.failure(Exception("User not found locally"))
             val totalCorrect = user.correctAnswers
-            val earnedIds    = user.achievements.toMutableList()
+            val earnedIds = user.achievements.toMutableList()
 
-            // Find newly unlocked milestones
             val newlyUnlocked = AchievementMilestones.ALL.filter { milestone ->
                 milestone.requiredCorrect <= totalCorrect && !earnedIds.contains(milestone.id)
             }
 
             if (newlyUnlocked.isNotEmpty()) {
-                // Save new IDs to Firebase
                 newlyUnlocked.forEach { earnedIds.add(it.id) }
-                usersRef.child(userId).child("achievements").setValue(earnedIds).await()
+                saveLocalUser(user.copy(achievements = earnedIds))
             }
 
-            // Convert AchievementMilestone → Achievement for result screen
             val result = newlyUnlocked.map { m ->
-                Achievement(
-                    id           = m.id,
-                    name         = "${m.emoji} ${m.name}",
-                    description  = m.description,
-                    requiredScore = m.requiredCorrect
-                )
+                Achievement(id = m.id, name = "${m.emoji} ${m.name}", description = m.description, requiredScore = m.requiredCorrect)
             }
             Result.success(result)
         } catch (e: Exception) {
@@ -337,77 +264,24 @@ class FirebaseHelper {
         }
     }
 
-    /**
-     * Returns all milestones earned by this user (based on correctAnswers in User model).
-     */
     suspend fun getUserAchievements(userId: String): Result<List<AchievementMilestone>> {
-        return try {
-            val userSnapshot = usersRef.child(userId).get().await()
-            val user = userSnapshot.getValue(User::class.java)
-                ?: return Result.failure(Exception("User not found"))
-            Result.success(AchievementMilestones.getEarned(user.correctAnswers))
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+        val user = getLocalUser(userId) ?: return Result.failure(Exception("User not found locally"))
+        return Result.success(AchievementMilestones.getEarned(user.correctAnswers))
     }
 
-    /**
-     * Returns ALL milestones with earned/locked status for the profile page.
-     */
-    suspend fun getAllMilestonesWithStatus(
-        userId: String
-    ): Result<Pair<List<AchievementMilestone>, Int>> {
-        return try {
-            val userSnapshot = usersRef.child(userId).get().await()
-            val user = userSnapshot.getValue(User::class.java)
-                ?: return Result.failure(Exception("User not found"))
-            Result.success(Pair(AchievementMilestones.ALL, user.correctAnswers))
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+    suspend fun getAllMilestonesWithStatus(userId: String): Result<Pair<List<AchievementMilestone>, Int>> {
+        val user = getLocalUser(userId) ?: return Result.failure(Exception("User not found locally"))
+        return Result.success(Pair(AchievementMilestones.ALL, user.correctAnswers))
     }
 
     // ==========================
-    // ADMIN
+    // ADMIN (Stubs)
     // ==========================
-
-    suspend fun verifyAdmin(userId: String): Boolean {
-        return try {
-            val snapshot = usersRef.child(userId).get().await()
-            val user = snapshot.getValue(User::class.java)
-            user?.isAdmin == true
-        } catch (e: Exception) {
-            false
-        }
+    suspend fun verifyAdmin(userId: String): Boolean = false
+    suspend fun initializeDatabase() {}
+    suspend fun createUser(user: User): Result<Boolean> {
+        saveLocalUser(user)
+        return Result.success(true)
     }
-
-    // ==========================
-    // INITIAL DATA
-    // ==========================
-
-    suspend fun initializeDatabase() {
-        try {
-            val snapshot = categoriesRef.get().await()
-
-            if (!snapshot.exists()) {
-                val categories = listOf(
-                    Category("asia", "Asia", "🌏", "Largest continent", 0, ColorPalette.BoldBlue1),
-                    Category("europe", "Europe", "🌍", "European countries", 0, ColorPalette.Turquoise),
-                    Category("americas", "Americas", "🌎", "North & South America", 0, ColorPalette.BoldOrange),
-                    Category("africa", "Africa", "🌍", "Cradle of humanity", 0, ColorPalette.SubtleGreen),
-                    Category("flags", "Flags", "🏁", "Guess flags", 0, ColorPalette.StrikingRed),
-                    Category("capitals", "Capitals", "🏛️", "World capitals", 0, ColorPalette.AccentPurple),
-                    Category("landmarks", "Landmarks", "🗽", "Famous places", 0, ColorPalette.DeepTeal),
-                    Category("world", "World", "🌐", "Mixed quiz", 0, ColorPalette.BoldBlue3)
-                )
-
-                categories.forEach {
-                    categoriesRef.child(it.id).setValue(it).await()
-                }
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+    suspend fun addQuestion(category: String, question: Question): Result<Boolean> = Result.success(true)
 }

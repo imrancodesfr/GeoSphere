@@ -34,7 +34,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        firebaseHelper = FirebaseHelper()
+        firebaseHelper = FirebaseHelper(this)
 
         setupToolbar()
         setupNavigationDrawer()

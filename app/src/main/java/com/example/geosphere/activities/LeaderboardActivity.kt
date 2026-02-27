@@ -27,7 +27,7 @@ class LeaderboardActivity : BaseActivity() {
         binding = ActivityLeaderboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseHelper = FirebaseHelper()
+        firebaseHelper = FirebaseHelper(this)
 
         setupToolbar()
         setupRecyclerView()

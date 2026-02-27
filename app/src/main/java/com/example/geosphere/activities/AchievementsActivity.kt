@@ -26,7 +26,7 @@ class AchievementsActivity : BaseActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        firebaseHelper = FirebaseHelper()
+        firebaseHelper = FirebaseHelper(this)
 
         setupToolbar()
         setupRecyclerView()

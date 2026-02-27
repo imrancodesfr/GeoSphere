@@ -46,7 +46,7 @@ class QuizActivity : BaseActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        firebaseHelper = FirebaseHelper()
+        firebaseHelper = FirebaseHelper(this)
 
         // Get intent data
         categoryId = intent.getStringExtra("category_id") ?: "world"
