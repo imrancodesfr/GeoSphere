@@ -8,7 +8,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
-
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.InputStream
+import java.text.SimpleDateFormat
+import java.util.*
 data class QuestionReport(
     val id: String = UUID.randomUUID().toString(),
     val questionId: String,
@@ -17,12 +22,6 @@ data class QuestionReport(
     val reportedByUserId: String,
     val timestamp: Long = System.currentTimeMillis()
 )
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.io.InputStream
-import java.text.SimpleDateFormat
-import java.util.*
 
 class FirebaseHelper(private val context: Context) {
 
