@@ -1,0 +1,28 @@
+{
+    "rules": {
+        "questions": {
+            ".read": "auth != null",
+            ".write": false
+        },
+        "users": {
+            "$uid": {
+                ".read": "auth.uid === $uid",
+                ".write": "auth.uid === $uid"
+            }
+        },
+        "leaderboard": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "achievements": {
+            ".read": "auth != null",
+            ".write": false
+        },
+        "user_answers": {
+            "$uid": {
+                ".read": "auth.uid === $uid",
+                ".write": "auth.uid === $uid"
+            }
+        }
+    }
+}

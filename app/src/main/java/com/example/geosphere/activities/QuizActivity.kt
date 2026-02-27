@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.geosphere.R
 import com.example.geosphere.databinding.ActivityQuizBinding
@@ -20,7 +19,7 @@ import com.example.geosphere.utils.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : BaseActivity() {
 
     private lateinit var binding: ActivityQuizBinding
     private lateinit var auth: FirebaseAuth

@@ -1,0 +1,2100 @@
+{
+  "questions": {
+    "world": {
+      "q001": {
+        "questionText": "What is the largest country in the world by area?",
+        "options": {
+          "0": "China",
+          "1": "Russia",
+          "2": "Canada",
+          "3": "USA"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Russia spans over 17 million km².",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which is the smallest country in the world?",
+        "options": {
+          "0": "Monaco",
+          "1": "San Marino",
+          "2": "Vatican City",
+          "3": "Liechtenstein"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Vatican City covers just 0.44 km².",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "What is the longest river in the world?",
+        "options": {
+          "0": "Amazon",
+          "1": "Mississippi",
+          "2": "Nile",
+          "3": "Yangtze"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Nile stretches ~6,650 km.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Which continent is the largest by area?",
+        "options": {
+          "0": "Africa",
+          "1": "Asia",
+          "2": "North America",
+          "3": "Antarctica"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Asia covers ~44.6 million km².",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "What is the tallest mountain in the world?",
+        "options": {
+          "0": "K2",
+          "1": "Kangchenjunga",
+          "2": "Mont Blanc",
+          "3": "Mount Everest"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Mount Everest stands at 8,849 m.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "Which ocean is the deepest?",
+        "options": {
+          "0": "Atlantic",
+          "1": "Indian",
+          "2": "Pacific",
+          "3": "Arctic"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Mariana Trench in the Pacific reaches ~11 km depth.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "Which country has the most natural lakes?",
+        "options": {
+          "0": "Russia",
+          "1": "USA",
+          "2": "Brazil",
+          "3": "Canada"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Canada has over 3 million lakes.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "What is the driest desert in the world?",
+        "options": {
+          "0": "Gobi",
+          "1": "Atacama",
+          "2": "Arabian",
+          "3": "Sahara"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Atacama in Chile averages less than 1 mm of rain per year.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which country has the longest coastline?",
+        "options": {
+          "0": "Russia",
+          "1": "Norway",
+          "2": "Australia",
+          "3": "Canada"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Canada's coastline is about 202,080 km.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q010": {
+        "questionText": "What is the most populous country in the world?",
+        "options": {
+          "0": "USA",
+          "1": "India",
+          "2": "China",
+          "3": "Indonesia"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "India surpassed China as the most populous in 2023.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which country contains most of the Amazon rainforest?",
+        "options": {
+          "0": "Colombia",
+          "1": "Peru",
+          "2": "Bolivia",
+          "3": "Brazil"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "~60% of the Amazon lies in Brazil.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "What is the largest desert in the world?",
+        "options": {
+          "0": "Sahara",
+          "1": "Arabian",
+          "2": "Gobi",
+          "3": "Antarctic"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Antarctica is classified as a desert with ~14 million km².",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q013": {
+        "questionText": "Which country has the most time zones?",
+        "options": {
+          "0": "Russia",
+          "1": "USA",
+          "2": "China",
+          "3": "France"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "France has 12 time zones counting its overseas territories.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q014": {
+        "questionText": "Where is the world's largest coral reef?",
+        "options": {
+          "0": "Caribbean Sea",
+          "1": "Red Sea",
+          "2": "Great Barrier Reef",
+          "3": "Belize Barrier Reef"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Great Barrier Reef off Australia stretches ~2,300 km.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q015": {
+        "questionText": "Which mountain range is the longest in the world?",
+        "options": {
+          "0": "Himalayas",
+          "1": "Rockies",
+          "2": "Andes",
+          "3": "Alps"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Andes stretch ~7,000 km along South America.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "Which country is both in Europe and Asia?",
+        "options": {
+          "0": "Georgia",
+          "1": "Turkey",
+          "2": "Russia",
+          "3": "All of these"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Russia, Turkey, and Georgia all span both continents.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "What is the name of the world's largest hot desert?",
+        "options": {
+          "0": "Gobi",
+          "1": "Australian",
+          "2": "Sahara",
+          "3": "Arabian"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Sahara covers ~9.2 million km² in North Africa.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "Which river flows through the most countries?",
+        "options": {
+          "0": "Amazon",
+          "1": "Nile",
+          "2": "Danube",
+          "3": "Rhine"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Danube flows through 10 countries.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q019": {
+        "questionText": "What is the highest plateau in the world?",
+        "options": {
+          "0": "Colorado Plateau",
+          "1": "Tibetan Plateau",
+          "2": "Deccan Plateau",
+          "3": "Patagonian Plateau"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Tibetan Plateau averages over 4,500 m above sea level.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "Which is the saltiest sea in the world?",
+        "options": {
+          "0": "Caspian Sea",
+          "1": "Red Sea",
+          "2": "Dead Sea",
+          "3": "Mediterranean Sea"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Dead Sea has a salinity of ~34%, far above ocean average.",
+        "difficulty": "medium",
+        "points": 1
+      }
+    },
+    "asia": {
+      "q001": {
+        "questionText": "What is the capital of Japan?",
+        "options": {
+          "0": "Osaka",
+          "1": "Kyoto",
+          "2": "Tokyo",
+          "3": "Hiroshima"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Tokyo is the capital and largest city of Japan.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which Asian country has the largest population?",
+        "options": {
+          "0": "China",
+          "1": "India",
+          "2": "Indonesia",
+          "3": "Bangladesh"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "India became the world's most populous country in 2023.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "Where is Mount Everest located?",
+        "options": {
+          "0": "India",
+          "1": "Tibet only",
+          "2": "Nepal/China border",
+          "3": "Pakistan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Everest sits on the border of Nepal and Tibet (China).",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Which is the largest country in Asia by area?",
+        "options": {
+          "0": "China",
+          "1": "India",
+          "2": "Russia",
+          "3": "Kazakhstan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Russia is the largest, spanning both Europe and Asia.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "What is the capital of Saudi Arabia?",
+        "options": {
+          "0": "Mecca",
+          "1": "Medina",
+          "2": "Jeddah",
+          "3": "Riyadh"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Riyadh is the capital and largest city of Saudi Arabia.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "Which river is known as the 'Sorrow of China'?",
+        "options": {
+          "0": "Yangtze",
+          "1": "Yellow River",
+          "2": "Pearl River",
+          "3": "Mekong"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Yellow River (Huang He) caused devastating floods historically.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q007": {
+        "questionText": "Which country is known as the Land of the Rising Sun?",
+        "options": {
+          "0": "South Korea",
+          "1": "China",
+          "2": "Thailand",
+          "3": "Japan"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Japan's name in Japanese (Nihon) means 'origin of the sun'.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "What is the capital of Pakistan?",
+        "options": {
+          "0": "Lahore",
+          "1": "Karachi",
+          "2": "Islamabad",
+          "3": "Peshawar"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Islamabad replaced Karachi as capital in 1966.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which Asian country has the most islands?",
+        "options": {
+          "0": "Japan",
+          "1": "Philippines",
+          "2": "Indonesia",
+          "3": "Malaysia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Indonesia has over 17,000 islands.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q010": {
+        "questionText": "What is the longest river in Asia?",
+        "options": {
+          "0": "Ganges",
+          "1": "Mekong",
+          "2": "Yangtze",
+          "3": "Ob"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Yangtze River stretches 6,300 km across China.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which country is the Gobi Desert mainly in?",
+        "options": {
+          "0": "Kazakhstan",
+          "1": "India",
+          "2": "China and Mongolia",
+          "3": "Russia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Gobi spans northern China and southern Mongolia.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "What is the capital of Vietnam?",
+        "options": {
+          "0": "Ho Chi Minh City",
+          "1": "Hanoi",
+          "2": "Da Nang",
+          "3": "Hue"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Hanoi is the capital; Ho Chi Minh City is the largest city.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "Which country has the Bosphorus strait?",
+        "options": {
+          "0": "Greece",
+          "1": "Turkey",
+          "2": "Iran",
+          "3": "Iraq"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Bosphorus connects the Black Sea to the Sea of Marmara in Turkey.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "What is the smallest country in Asia?",
+        "options": {
+          "0": "Bahrain",
+          "1": "Maldives",
+          "2": "Singapore",
+          "3": "Macao"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Maldives covers only 298 km².",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q015": {
+        "questionText": "Which country is known as the Pearl of the Orient Seas?",
+        "options": {
+          "0": "Vietnam",
+          "1": "Thailand",
+          "2": "Philippines",
+          "3": "Indonesia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Philippines was called Pearl of the Orient Seas by José Rizal.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "What is the capital of Bangladesh?",
+        "options": {
+          "0": "Chittagong",
+          "1": "Dhaka",
+          "2": "Rajshahi",
+          "3": "Khulna"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Dhaka is the capital and most densely populated city.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "Which Asian sea is the shallowest?",
+        "options": {
+          "0": "South China Sea",
+          "1": "Arabian Sea",
+          "2": "Sea of Japan",
+          "3": "Aral Sea"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "The Aral Sea is extremely shallow and has shrunk dramatically.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q018": {
+        "questionText": "What is the official name of Taiwan?",
+        "options": {
+          "0": "Province of Taiwan",
+          "1": "Republic of China",
+          "2": "Chinese Taipei",
+          "3": "Democratic Republic of Taiwan"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Taiwan officially calls itself the Republic of China (ROC).",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q019": {
+        "questionText": "Which country has the most UNESCO World Heritage Sites in Asia?",
+        "options": {
+          "0": "Japan",
+          "1": "India",
+          "2": "China",
+          "3": "Italy"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "China has 57 UNESCO sites, most in Asia.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q020": {
+        "questionText": "Where is the ancient city of Angkor Wat located?",
+        "options": {
+          "0": "Thailand",
+          "1": "Vietnam",
+          "2": "Myanmar",
+          "3": "Cambodia"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Angkor Wat is in Siem Reap, Cambodia.",
+        "difficulty": "medium",
+        "points": 1
+      }
+    },
+    "europe": {
+      "q001": {
+        "questionText": "What is the smallest country in Europe?",
+        "options": {
+          "0": "Monaco",
+          "1": "Liechtenstein",
+          "2": "Vatican City",
+          "3": "San Marino"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Vatican City covers just 0.44 km².",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which river is the longest in Europe?",
+        "options": {
+          "0": "Rhine",
+          "1": "Danube",
+          "2": "Volga",
+          "3": "Dnieper"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Volga stretches about 3,530 km through Russia.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "What is the capital of Portugal?",
+        "options": {
+          "0": "Porto",
+          "1": "Lisbon",
+          "2": "Faro",
+          "3": "Braga"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Lisbon is the capital and oldest city in Western Europe.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Which country has the most land bordering other countries in Europe?",
+        "options": {
+          "0": "France",
+          "1": "Germany",
+          "2": "Russia",
+          "3": "Austria"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Germany borders 9 countries.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "What is the capital of the Netherlands?",
+        "options": {
+          "0": "Rotterdam",
+          "1": "The Hague",
+          "2": "Amsterdam",
+          "3": "Utrecht"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Amsterdam is the capital, though the government sits in The Hague.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "Which mountain is the highest in Europe?",
+        "options": {
+          "0": "Mont Blanc",
+          "1": "Matterhorn",
+          "2": "Mount Elbrus",
+          "3": "Monte Rosa"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Mount Elbrus in Russia stands at 5,642 m.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q007": {
+        "questionText": "Which European country has the most islands?",
+        "options": {
+          "0": "Croatia",
+          "1": "Greece",
+          "2": "Norway",
+          "3": "Sweden"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Greece has over 6,000 islands.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "What is the capital of Switzerland?",
+        "options": {
+          "0": "Zurich",
+          "1": "Geneva",
+          "2": "Lausanne",
+          "3": "Bern"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Bern is the federal city (capital) of Switzerland.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which European country is shaped like a boot?",
+        "options": {
+          "0": "Spain",
+          "1": "Greece",
+          "2": "Italy",
+          "3": "Portugal"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Italy's peninsular shape resembles a high-heeled boot.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q010": {
+        "questionText": "What is the largest lake in Europe?",
+        "options": {
+          "0": "Lake Geneva",
+          "1": "Lake Ladoga",
+          "2": "Caspian Sea",
+          "3": "Lake Balaton"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Lake Ladoga in Russia covers ~17,700 km².",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q011": {
+        "questionText": "Which country is the Eiffel Tower in?",
+        "options": {
+          "0": "Belgium",
+          "1": "France",
+          "2": "Luxembourg",
+          "3": "Switzerland"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Eiffel Tower is in Paris, France.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "What is the capital of Ukraine?",
+        "options": {
+          "0": "Lviv",
+          "1": "Kharkiv",
+          "2": "Odessa",
+          "3": "Kyiv"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Kyiv (Kiev) is the capital and largest city of Ukraine.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "Which sea does not touch Europe?",
+        "options": {
+          "0": "Baltic Sea",
+          "1": "Caspian Sea",
+          "2": "Coral Sea",
+          "3": "Adriatic Sea"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Coral Sea is in the Pacific near Australia.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "Which country is home to Dracula's castle?",
+        "options": {
+          "0": "Bulgaria",
+          "1": "Hungary",
+          "2": "Romania",
+          "3": "Serbia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Bran Castle in Transylvania, Romania is associated with Dracula.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q015": {
+        "questionText": "What is the capital of Belgium?",
+        "options": {
+          "0": "Liège",
+          "1": "Antwerp",
+          "2": "Brussels",
+          "3": "Ghent"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Brussels is the capital and home of EU headquarters.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "Which strait connects the Atlantic and Mediterranean?",
+        "options": {
+          "0": "Strait of Dover",
+          "1": "Strait of Gibraltar",
+          "2": "Bosphorus",
+          "3": "Strait of Messina"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Strait of Gibraltar separates Spain from Morocco.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "What is the capital of Poland?",
+        "options": {
+          "0": "Krakow",
+          "1": "Lodz",
+          "2": "Gdansk",
+          "3": "Warsaw"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Warsaw became capital in 1596.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "The Colosseum is in which European city?",
+        "options": {
+          "0": "Athens",
+          "1": "Rome",
+          "2": "Madrid",
+          "3": "Florence"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Rome's Colosseum was built between 70–80 AD.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "Which country has the Matterhorn?",
+        "options": {
+          "0": "Austria",
+          "1": "France",
+          "2": "Italy and Switzerland",
+          "3": "Germany"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Matterhorn straddles the Swiss-Italian border.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "What is the capital of Finland?",
+        "options": {
+          "0": "Tampere",
+          "1": "Turku",
+          "2": "Espoo",
+          "3": "Helsinki"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Helsinki sits on the southern coast of Finland.",
+        "difficulty": "easy",
+        "points": 1
+      }
+    },
+    "americas": {
+      "q001": {
+        "questionText": "What is the capital of Brazil?",
+        "options": {
+          "0": "São Paulo",
+          "1": "Rio de Janeiro",
+          "2": "Brasília",
+          "3": "Salvador"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Brasília replaced Rio de Janeiro as capital in 1960.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which is the longest mountain range in the Americas?",
+        "options": {
+          "0": "Rockies",
+          "1": "Appalachians",
+          "2": "Andes",
+          "3": "Sierra Madre"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Andes stretch ~7,000 km along South America's west coast.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "What is the capital of Canada?",
+        "options": {
+          "0": "Toronto",
+          "1": "Montreal",
+          "2": "Vancouver",
+          "3": "Ottawa"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Ottawa has been Canada's capital since 1857.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Which US state is the largest by area?",
+        "options": {
+          "0": "Texas",
+          "1": "California",
+          "2": "Montana",
+          "3": "Alaska"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Alaska is more than twice the size of Texas.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "What is the capital of Argentina?",
+        "options": {
+          "0": "Córdoba",
+          "1": "Buenos Aires",
+          "2": "Rosario",
+          "3": "Mendoza"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Buenos Aires is the capital and cultural heart of Argentina.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "Which country has the Angel Falls, the world's highest waterfall?",
+        "options": {
+          "0": "Brazil",
+          "1": "Ecuador",
+          "2": "Venezuela",
+          "3": "Colombia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Angel Falls in Venezuela drops 979 m.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "Which is the only country in South America that speaks English?",
+        "options": {
+          "0": "Suriname",
+          "1": "Guyana",
+          "2": "Trinidad",
+          "3": "Belize"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Guyana is the only English-speaking country in South America.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q008": {
+        "questionText": "Through which US city does the Mississippi River reach the Gulf of Mexico?",
+        "options": {
+          "0": "Baton Rouge",
+          "1": "Memphis",
+          "2": "New Orleans",
+          "3": "Mobile"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Mississippi empties into the Gulf of Mexico near New Orleans.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which South American country is landlocked?",
+        "options": {
+          "0": "Peru",
+          "1": "Bolivia",
+          "2": "Ecuador",
+          "3": "Uruguay"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Bolivia and Paraguay are the two landlocked countries in South America.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q010": {
+        "questionText": "What is the capital of Mexico?",
+        "options": {
+          "0": "Guadalajara",
+          "1": "Monterrey",
+          "2": "Puebla",
+          "3": "Mexico City"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Mexico City is the capital and most populous city.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which Caribbean island is the largest?",
+        "options": {
+          "0": "Hispaniola",
+          "1": "Puerto Rico",
+          "2": "Cuba",
+          "3": "Jamaica"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Cuba covers ~110,000 km², the largest Caribbean island.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "What is the capital of Chile?",
+        "options": {
+          "0": "Valparaíso",
+          "1": "Concepción",
+          "2": "Santiago",
+          "3": "Antofagasta"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Santiago is the capital and houses ~40% of Chile's population.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "Which US state is furthest south?",
+        "options": {
+          "0": "Texas",
+          "1": "Florida",
+          "2": "Louisiana",
+          "3": "Hawaii"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Hawaii is the southernmost U.S. state.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "What is the largest lake in South America?",
+        "options": {
+          "0": "Lake Maracaibo",
+          "1": "Lake Titicaca",
+          "2": "Lake Poopó",
+          "3": "Lagoa dos Patos"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Lake Titicaca, at 3,800 m, is the world's highest navigable lake.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q015": {
+        "questionText": "Which country claims both North and South America as having only one country touching both?",
+        "options": {
+          "0": "Panama",
+          "1": "Colombia",
+          "2": "Guatemala",
+          "3": "No country does"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "No single country spans both continents - Panama is in Central America.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q016": {
+        "questionText": "What is the capital of Peru?",
+        "options": {
+          "0": "Arequipa",
+          "1": "Cusco",
+          "2": "Trujillo",
+          "3": "Lima"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Lima is Peru's capital and largest city, home to ~10 million people.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "Which North American country has the most French speakers?",
+        "options": {
+          "0": "USA",
+          "1": "Canada",
+          "2": "Haiti",
+          "3": "Mexico"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Canada has ~7.3 million French speakers, mostly in Quebec.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "The Galapagos Islands belong to which country?",
+        "options": {
+          "0": "Peru",
+          "1": "Colombia",
+          "2": "Ecuador",
+          "3": "Panama"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Galapagos are a province of Ecuador, ~1,000 km off the coast.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "What is the capital of Colombia?",
+        "options": {
+          "0": "Medellín",
+          "1": "Cali",
+          "2": "Bogotá",
+          "3": "Cartagena"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Bogotá sits at 2,600 m altitude, one of highest capitals in the world.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "Which US state was the last to join the union?",
+        "options": {
+          "0": "Alaska",
+          "1": "Hawaii",
+          "2": "New Mexico",
+          "3": "Arizona"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Hawaii became the 50th state on August 21, 1959.",
+        "difficulty": "medium",
+        "points": 1
+      }
+    },
+    "africa": {
+      "q001": {
+        "questionText": "What is the largest country in Africa by area?",
+        "options": {
+          "0": "Sudan",
+          "1": "Libya",
+          "2": "DR Congo",
+          "3": "Algeria"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Algeria covers ~2.38 million km².",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which African country has the largest population?",
+        "options": {
+          "0": "Ethiopia",
+          "1": "Egypt",
+          "2": "Nigeria",
+          "3": "DR Congo"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Nigeria has ~220 million people, the most in Africa.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "What is the capital of South Africa?",
+        "options": {
+          "0": "Johannesburg",
+          "1": "Cape Town",
+          "2": "Pretoria",
+          "3": "It has three capitals"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial).",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q004": {
+        "questionText": "Where is the Great Sphinx located?",
+        "options": {
+          "0": "Luxor",
+          "1": "Giza",
+          "2": "Alexandria",
+          "3": "Cairo city center"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Sphinx is on the Giza Plateau near Cairo.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "Which African country is known as the 'Rainbow Nation'?",
+        "options": {
+          "0": "Kenya",
+          "1": "Rwanda",
+          "2": "South Africa",
+          "3": "Namibia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Nelson Mandela coined 'Rainbow Nation' after apartheid ended.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "What is the longest river in Africa?",
+        "options": {
+          "0": "Congo",
+          "1": "Niger",
+          "2": "Nile",
+          "3": "Zambezi"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Nile (~6,650 km) is also the world's longest.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "Which African country is the Horn of Africa?",
+        "options": {
+          "0": "Kenya only",
+          "1": "Somalia and Ethiopia",
+          "2": "Somalia, Djibouti, Eritrea, Ethiopia",
+          "3": "Somalia only"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Horn of Africa comprises Somalia, Djibouti, Eritrea, and Ethiopia.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q008": {
+        "questionText": "What is the capital of Morocco?",
+        "options": {
+          "0": "Casablanca",
+          "1": "Marrakech",
+          "2": "Fes",
+          "3": "Rabat"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Rabat is the capital; Casablanca is the largest city.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which African country has the most pyramids?",
+        "options": {
+          "0": "Egypt",
+          "1": "Libya",
+          "2": "Sudan",
+          "3": "Ethiopia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Sudan has 200–255 pyramids, more than Egypt.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q010": {
+        "questionText": "What is the highest mountain in Africa?",
+        "options": {
+          "0": "Mount Kenya",
+          "1": "Mount Kilimanjaro",
+          "2": "Ras Dashen",
+          "3": "Mount Stanley"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Kilimanjaro in Tanzania stands at 5,895 m.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which African country was never colonized?",
+        "options": {
+          "0": "Ethiopia and Liberia",
+          "1": "Morocco",
+          "2": "Ethiopia only",
+          "3": "Tanzania"
+        },
+        "correctOptionIndex": 0,
+        "explanation": "Ethiopia and Liberia were the only African nations that resisted full colonization.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q012": {
+        "questionText": "What is the capital of Kenya?",
+        "options": {
+          "0": "Mombasa",
+          "1": "Kisumu",
+          "2": "Nakuru",
+          "3": "Nairobi"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Nairobi was established in 1899 as a railway camp.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "Which country controls the Strait of Gibraltar from the African side?",
+        "options": {
+          "0": "Algeria",
+          "1": "Libya",
+          "2": "Morocco",
+          "3": "Tunisia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Moroccan city of Ceuta borders the Strait of Gibraltar.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "The 'Big Five' game animals are associated with which continent?",
+        "options": {
+          "0": "Asia",
+          "1": "Australia",
+          "2": "Africa",
+          "3": "South America"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Lion, leopard, elephant, rhino, and buffalo are Africa's Big Five.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q015": {
+        "questionText": "What is the largest lake in Africa?",
+        "options": {
+          "0": "Lake Tanganyika",
+          "1": "Lake Victoria",
+          "2": "Lake Malawi",
+          "3": "Lake Turkana"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Lake Victoria covers ~69,000 km² across Uganda, Kenya, and Tanzania.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "Which country does NOT border the Sahara Desert?",
+        "options": {
+          "0": "Mali",
+          "1": "Niger",
+          "2": "Ethiopia",
+          "3": "Algeria"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Ethiopia is in East Africa and does not border the Sahara.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "What is the capital of Ghana?",
+        "options": {
+          "0": "Kumasi",
+          "1": "Accra",
+          "2": "Tamale",
+          "3": "Cape Coast"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Accra is the capital and largest city of Ghana.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "Which African country is an island nation off the east coast?",
+        "options": {
+          "0": "São Tomé",
+          "1": "Mauritius",
+          "2": "Madagascar",
+          "3": "All of these"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "São Tomé, Mauritius, Madagascar, Comoros, and Seychelles are all island nations.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "What is the capital of Egypt?",
+        "options": {
+          "0": "Alexandria",
+          "1": "Luxor",
+          "2": "Giza",
+          "3": "Cairo"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Cairo, population ~20 million, is Africa's largest city.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "The Victoria Falls are on the border of which two countries?",
+        "options": {
+          "0": "Kenya and Tanzania",
+          "1": "Zambia and Zimbabwe",
+          "2": "Mozambique and Malawi",
+          "3": "Botswana and Namibia"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Victoria Falls sits on the Zambezi River between Zambia and Zimbabwe.",
+        "difficulty": "medium",
+        "points": 1
+      }
+    },
+    "flags": {
+      "q001": {
+        "questionText": "Which country's flag has a maple leaf?",
+        "options": {
+          "0": "Australia",
+          "1": "Canada",
+          "2": "New Zealand",
+          "3": "South Africa"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Canada's flag has a red maple leaf, adopted in 1965.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "Which is the only country with a non-rectangular flag?",
+        "options": {
+          "0": "Switzerland",
+          "1": "Nepal",
+          "2": "Vatican",
+          "3": "Bhutan"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Nepal's flag is a double pennant shape — the only non-rectangular national flag.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "Which country has a dragon on its flag?",
+        "options": {
+          "0": "China",
+          "1": "South Korea",
+          "2": "Bhutan",
+          "3": "Japan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Bhutan's flag features a white Druk (thunder dragon).",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Which country's flag is the only one with a building on it?",
+        "options": {
+          "0": "India",
+          "1": "Cambodia",
+          "2": "Cyprus",
+          "3": "Afghanistan"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Cambodia's flag features Angkor Wat temple.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q005": {
+        "questionText": "Which flag has the most colors?",
+        "options": {
+          "0": "South Africa",
+          "1": "Belize",
+          "2": "Turkmenistan",
+          "3": "The flag counts are the same"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Belize's flag has 12 colors, the most of any national flag.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q006": {
+        "questionText": "Which country has a crescent moon and star on its flag?",
+        "options": {
+          "0": "Turkey",
+          "1": "Pakistan",
+          "2": "Malaysia",
+          "3": "All of these"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Turkey, Pakistan, Malaysia, and many other countries use the crescent moon and star.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "Which flag features a cedar tree?",
+        "options": {
+          "0": "Lebanon",
+          "1": "Jordan",
+          "2": "Syria",
+          "3": "Cyprus"
+        },
+        "correctOptionIndex": 0,
+        "explanation": "Lebanon's flag has a green cedar tree, symbol of the country's famous cedars.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "Which country's flag is all green?",
+        "options": {
+          "0": "Saudi Arabia",
+          "1": "Pakistan",
+          "2": "Libya (historic)",
+          "3": "Nigeria"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Libya used a plain green flag from 1977 to 2011 under Gaddafi.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q009": {
+        "questionText": "Which flag has a sun with 32 rays?",
+        "options": {
+          "0": "Japan",
+          "1": "Bangladesh",
+          "2": "Argentina",
+          "3": "Uruguay"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Argentina's flag has the Sun of May with 32 rays (16 wavy, 16 straight).",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q010": {
+        "questionText": "The Union Jack flag is the flag of which country?",
+        "options": {
+          "0": "Australia",
+          "1": "New Zealand",
+          "2": "United Kingdom",
+          "3": "Canada"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Union Jack represents the UK, combining crosses of England, Scotland, and Ireland.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which country's flag is identical to Monaco's flag?",
+        "options": {
+          "0": "Poland",
+          "1": "Indonesia",
+          "2": "Dubai",
+          "3": "Latvia"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Indonesia (red over white) and Monaco (red over white) are nearly identical but different proportions.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q012": {
+        "questionText": "Which country has a white cross on a red background?",
+        "options": {
+          "0": "Denmark",
+          "1": "Norway",
+          "2": "Switzerland",
+          "3": "Austria"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Switzerland has a white cross on red, making it nearly square-shaped.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "Which African country's flag has the AK-47 on it?",
+        "options": {
+          "0": "Angola",
+          "1": "Zimbabwe",
+          "2": "Mozambique",
+          "3": "South Sudan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Mozambique's flag features an AK-47 rifle, hoe, and book.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "Which country's flag features a sun with a human face?",
+        "options": {
+          "0": "Argentina",
+          "1": "Uruguay",
+          "2": "Both Argentina and Uruguay",
+          "3": "Chile"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Both Argentina and Uruguay have a 'Sun of May' with a human face on their flags.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q015": {
+        "questionText": "The rising sun flag belongs to which country?",
+        "options": {
+          "0": "China",
+          "1": "South Korea",
+          "2": "Japan",
+          "3": "Vietnam"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Japan's Hinomaru flag features a red circle (sun) on white.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "Which country's flag has the color black representing the people?",
+        "options": {
+          "0": "Nigeria",
+          "1": "South Africa",
+          "2": "Kenya",
+          "3": "Zimbabwe"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Kenya's flag: black = people, red = blood, green = land, white = peace.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "The Star of David appears on which country's flag?",
+        "options": {
+          "0": "Palestine",
+          "1": "Israel",
+          "2": "Jordan",
+          "3": "Saudi Arabia"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Israel's flag has the blue Star of David between two horizontal stripes.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "Which country has a flag that is just two colors with a red, white, and blue pattern?",
+        "options": {
+          "0": "France",
+          "1": "Netherlands",
+          "2": "Russia",
+          "3": "All of these"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "France (vertical), Netherlands (horizontal), and Russia (horizontal) all use red, white, and blue.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "Which flag has the Southern Cross constellation?",
+        "options": {
+          "0": "Australia",
+          "1": "New Zealand",
+          "2": "Brazil",
+          "3": "All of these"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Australia, New Zealand, Brazil, Papua New Guinea, and Samoa all feature the Southern Cross.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q020": {
+        "questionText": "Which country has a flag with an eagle on a cactus?",
+        "options": {
+          "0": "Guatemala",
+          "1": "Mexico",
+          "2": "Colombia",
+          "3": "Honduras"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Mexico's flag shows an eagle eating a snake while perched on a cactus.",
+        "difficulty": "medium",
+        "points": 1
+      }
+    },
+    "capitals": {
+      "q001": {
+        "questionText": "What is the capital of Australia?",
+        "options": {
+          "0": "Sydney",
+          "1": "Melbourne",
+          "2": "Brisbane",
+          "3": "Canberra"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Canberra was purpose-built as the capital, a compromise between Sydney and Melbourne.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "What is the capital of India?",
+        "options": {
+          "0": "Mumbai",
+          "1": "New Delhi",
+          "2": "Kolkata",
+          "3": "Chennai"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "New Delhi has been India's capital since 1911.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "Which city is the capital of New Zealand?",
+        "options": {
+          "0": "Auckland",
+          "1": "Christchurch",
+          "2": "Wellington",
+          "3": "Hamilton"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Wellington is the capital; Auckland is the largest city.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "What is the highest capital city in the world?",
+        "options": {
+          "0": "Quito",
+          "1": "Bogotá",
+          "2": "Addis Ababa",
+          "3": "La Paz / Sucre"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "La Paz (seat of government) sits at 3,640 m; Sucre (constitutional capital) at 2,810 m.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q005": {
+        "questionText": "What is the capital of Russia?",
+        "options": {
+          "0": "St. Petersburg",
+          "1": "Vladivostok",
+          "2": "Novosibirsk",
+          "3": "Moscow"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Moscow has been Russia's capital since 1918.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "Which capital city has the most people in the world?",
+        "options": {
+          "0": "Beijing",
+          "1": "Tokyo",
+          "2": "Jakarta",
+          "3": "Delhi"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Tokyo's greater urban area holds ~37 million people.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "What is the capital of Turkey?",
+        "options": {
+          "0": "Istanbul",
+          "1": "Izmir",
+          "2": "Ankara",
+          "3": "Bursa"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Ankara replaced Istanbul as capital in 1923 after the Turkish Republic was founded.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "What is the capital of South Korea?",
+        "options": {
+          "0": "Busan",
+          "1": "Incheon",
+          "2": "Seoul",
+          "3": "Daegu"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Seoul is home to half of South Korea's entire population.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Which country's capital is Naypyidaw?",
+        "options": {
+          "0": "Thailand",
+          "1": "Cambodia",
+          "2": "Laos",
+          "3": "Myanmar"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Myanmar moved its capital from Yangon to Naypyidaw in 2006.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q010": {
+        "questionText": "What is the capital of Brazil?",
+        "options": {
+          "0": "Rio de Janeiro",
+          "1": "Brasília",
+          "2": "São Paulo",
+          "3": "Manaus"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Brasília was built from scratch and became the capital in 1960.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "What is the capital of Nigeria?",
+        "options": {
+          "0": "Lagos",
+          "1": "Abuja",
+          "2": "Kano",
+          "3": "Ibadan"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Abuja replaced Lagos as capital in 1991.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "What is the capital of Indonesia?",
+        "options": {
+          "0": "Bali",
+          "1": "Surabaya",
+          "2": "Bandung",
+          "3": "Jakarta"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Jakarta is the capital, though Indonesia is building a new capital called Nusantara.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "What is the capital of South Africa that hosts Parliament?",
+        "options": {
+          "0": "Pretoria",
+          "1": "Cape Town",
+          "2": "Bloemfontein",
+          "3": "Johannesburg"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Cape Town is South Africa's legislative capital; Pretoria is executive.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q014": {
+        "questionText": "The city of Nur-Sultan (now Astana) is capital of which country?",
+        "options": {
+          "0": "Uzbekistan",
+          "1": "Azerbaijan",
+          "2": "Kazakhstan",
+          "3": "Kyrgyzstan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "It was renamed Nur-Sultan after president Nazarbayev, then changed back to Astana in 2022.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q015": {
+        "questionText": "What is the capital of Iran?",
+        "options": {
+          "0": "Isfahan",
+          "1": "Mashhad",
+          "2": "Tabriz",
+          "3": "Tehran"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Tehran is Iran's capital with over 15 million people in its metro area.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "Which capital city is located on two continents?",
+        "options": {
+          "0": "Moscow",
+          "1": "Istanbul",
+          "2": "Ankara",
+          "3": "Baku"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Istanbul straddles Europe and Asia across the Bosphorus strait.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q017": {
+        "questionText": "What is the capital of Argentina?",
+        "options": {
+          "0": "Cordoba",
+          "1": "Rosario",
+          "2": "Buenos Aires",
+          "3": "Mendoza"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Buenos Aires translates to 'fair winds' and has been capital since the 18th century.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "What is the capital of Saudi Arabia?",
+        "options": {
+          "0": "Mecca",
+          "1": "Jeddah",
+          "2": "Medina",
+          "3": "Riyadh"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Riyadh has grown from a small town to a mega-city of over 7 million.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "Bangkok is the capital of which country?",
+        "options": {
+          "0": "Malaysia",
+          "1": "Vietnam",
+          "2": "Thailand",
+          "3": "Cambodia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Bangkok's official Thai name is the longest city name in the world.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "Which is the only capital city in the world that begins with the letter Q?",
+        "options": {
+          "0": "Qom",
+          "1": "Quito",
+          "2": "Queenstown",
+          "3": "Qaraghandy"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Quito, the capital of Ecuador, is the only national capital beginning with Q.",
+        "difficulty": "hard",
+        "points": 2
+      }
+    },
+    "landmarks": {
+      "q001": {
+        "questionText": "In which country is the Taj Mahal?",
+        "options": {
+          "0": "Pakistan",
+          "1": "Bangladesh",
+          "2": "India",
+          "3": "Afghanistan"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Taj Mahal is in Agra, India, built by Emperor Shah Jahan.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q002": {
+        "questionText": "The Colosseum is located in which city?",
+        "options": {
+          "0": "Athens",
+          "1": "Madrid",
+          "2": "Rome",
+          "3": "Istanbul"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Rome's Colosseum was completed in 80 AD.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q003": {
+        "questionText": "Which country is home to Machu Picchu?",
+        "options": {
+          "0": "Bolivia",
+          "1": "Ecuador",
+          "2": "Colombia",
+          "3": "Peru"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Machu Picchu is an Inca citadel in the Andes Mountains of Peru.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q004": {
+        "questionText": "Where is the Statue of Liberty?",
+        "options": {
+          "0": "Washington D.C.",
+          "1": "Ellis Island",
+          "2": "Liberty Island, New York",
+          "3": "Philadelphia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Statue was a gift from France and stands on Liberty Island in New York Harbor.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q005": {
+        "questionText": "The Great Wall of China was primarily built to defend against which group?",
+        "options": {
+          "0": "Japanese",
+          "1": "Mongols",
+          "2": "Koreans",
+          "3": "Tibetans"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Great Wall was constructed to protect against northern nomadic invasions, mainly Mongols.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q006": {
+        "questionText": "In which Egyptian city are the pyramids of Giza?",
+        "options": {
+          "0": "Luxor",
+          "1": "Cairo outskirts",
+          "2": "Alexandria",
+          "3": "Aswan"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "The Giza pyramids are on the outskirts of Cairo, on the west bank of the Nile.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q007": {
+        "questionText": "The Acropolis is in which country?",
+        "options": {
+          "0": "Turkey",
+          "1": "Italy",
+          "2": "Jordan",
+          "3": "Greece"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "The Athenian Acropolis, housing the Parthenon, is in Athens, Greece.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q008": {
+        "questionText": "Christ the Redeemer statue overlooks which city?",
+        "options": {
+          "0": "São Paulo",
+          "1": "Buenos Aires",
+          "2": "Bogotá",
+          "3": "Rio de Janeiro"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Christ the Redeemer stands on Corcovado mountain overlooking Rio de Janeiro.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q009": {
+        "questionText": "Stonehenge is located in which country?",
+        "options": {
+          "0": "Ireland",
+          "1": "Scotland",
+          "2": "England",
+          "3": "Wales"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Stonehenge is in Wiltshire, England, built around 3000–1500 BCE.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q010": {
+        "questionText": "The Petra rock city is in which country?",
+        "options": {
+          "0": "Egypt",
+          "1": "Israel",
+          "2": "Jordan",
+          "3": "Syria"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Petra, the 'Rose City', is a archaeological site in Ma'an Governorate, Jordan.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q011": {
+        "questionText": "Which country has the Burj Khalifa?",
+        "options": {
+          "0": "Qatar",
+          "1": "Saudi Arabia",
+          "2": "Kuwait",
+          "3": "UAE"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "The Burj Khalifa in Dubai, UAE, is the world's tallest building at 828 m.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q012": {
+        "questionText": "Which ancient wonder still exists today?",
+        "options": {
+          "0": "Hanging Gardens of Babylon",
+          "1": "Colossus of Rhodes",
+          "2": "Great Pyramid of Giza",
+          "3": "Lighthouse of Alexandria"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Great Pyramid of Giza is the only surviving ancient wonder of the world.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q013": {
+        "questionText": "The Alhambra palace is in which country?",
+        "options": {
+          "0": "Morocco",
+          "1": "Portugal",
+          "2": "Spain",
+          "3": "Italy"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Alhambra is a Moorish palace in Granada, Andalusia, Spain.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q014": {
+        "questionText": "Big Ben is a clock tower in which city?",
+        "options": {
+          "0": "Edinburgh",
+          "1": "Dublin",
+          "2": "Manchester",
+          "3": "London"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Big Ben is the nickname for the bell in the Elizabeth Tower, London.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q015": {
+        "questionText": "Where is the famous opera house with a sail-like roof?",
+        "options": {
+          "0": "Auckland",
+          "1": "Sydney",
+          "2": "Melbourne",
+          "3": "Wellington"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Sydney Opera House, designed by Jørn Utzon, opened in 1973.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q016": {
+        "questionText": "The Amazon Theatre (Teatro Amazonas) opera house is in which city?",
+        "options": {
+          "0": "Bogotá",
+          "1": "Lima",
+          "2": "Buenos Aires",
+          "3": "Manaus"
+        },
+        "correctOptionIndex": 3,
+        "explanation": "Manaus, Brazil, has a famous opera house built during the rubber boom in 1896.",
+        "difficulty": "hard",
+        "points": 2
+      },
+      "q017": {
+        "questionText": "Which country is home to the world's largest Buddhist temple, Borobudur?",
+        "options": {
+          "0": "Thailand",
+          "1": "Cambodia",
+          "2": "Indonesia",
+          "3": "Myanmar"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Borobudur is in Java, Indonesia, built in the 9th century.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q018": {
+        "questionText": "The Tower of Pisa is in which Italian city?",
+        "options": {
+          "0": "Florence",
+          "1": "Venice",
+          "2": "Pisa",
+          "3": "Rome"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "The Leaning Tower of Pisa is in the campo dei Miracoli in Pisa.",
+        "difficulty": "easy",
+        "points": 1
+      },
+      "q019": {
+        "questionText": "Chichen Itza is located in which country?",
+        "options": {
+          "0": "Guatemala",
+          "1": "Peru",
+          "2": "Mexico",
+          "3": "Colombia"
+        },
+        "correctOptionIndex": 2,
+        "explanation": "Chichen Itza is a Mayan pyramid on Mexico's Yucatán Peninsula.",
+        "difficulty": "medium",
+        "points": 1
+      },
+      "q020": {
+        "questionText": "Uluru (Ayers Rock) is a sacred site in which country?",
+        "options": {
+          "0": "New Zealand",
+          "1": "Australia",
+          "2": "Papua New Guinea",
+          "3": "Fiji"
+        },
+        "correctOptionIndex": 1,
+        "explanation": "Uluru is a massive sandstone monolith in Australia's Northern Territory.",
+        "difficulty": "easy",
+        "points": 1
+      }
+    }
+  }
+}

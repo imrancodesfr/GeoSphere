@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.geosphere.R
 import com.example.geosphere.databinding.ActivityRegisterBinding
@@ -16,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth

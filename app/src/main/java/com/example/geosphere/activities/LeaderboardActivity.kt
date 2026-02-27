@@ -3,7 +3,6 @@ package com.example.geosphere.activities
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,7 @@ import com.example.geosphere.utils.FirebaseHelper
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 
-class LeaderboardActivity : AppCompatActivity() {
+class LeaderboardActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLeaderboardBinding
     private lateinit var firebaseHelper: FirebaseHelper

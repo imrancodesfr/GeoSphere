@@ -11,20 +11,18 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.geosphere.R
 import com.example.geosphere.databinding.ActivitySettingsBinding
 import com.example.geosphere.utils.Constants
 import com.example.geosphere.utils.ThemeHelper
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var prefs: SharedPreferences
     private var currentTheme = ThemeHelper.THEME_MIDNIGHT
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeHelper.applyTheme(this)   // ← apply BEFORE super + setContentView
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)

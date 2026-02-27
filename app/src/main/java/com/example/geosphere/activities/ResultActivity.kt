@@ -3,12 +3,11 @@ package com.example.geosphere.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.geosphere.R
 import com.example.geosphere.databinding.ActivityResultBinding
 
-class ResultActivity : AppCompatActivity() {
+class ResultActivity : BaseActivity() {
 
     private lateinit var binding: ActivityResultBinding
 

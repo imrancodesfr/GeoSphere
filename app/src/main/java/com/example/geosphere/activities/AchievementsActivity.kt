@@ -3,7 +3,6 @@ package com.example.geosphere.activities
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geosphere.R
@@ -14,7 +13,7 @@ import com.example.geosphere.utils.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class AchievementsActivity : AppCompatActivity() {
+class AchievementsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAchievementsBinding
     private lateinit var firebaseHelper: FirebaseHelper

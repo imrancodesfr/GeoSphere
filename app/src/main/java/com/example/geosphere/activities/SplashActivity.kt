@@ -3,7 +3,6 @@ package com.example.geosphere.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.geosphere.R
 import com.example.geosphere.databinding.ActivitySplashBinding
@@ -12,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding
     private lateinit var auth: FirebaseAuth
