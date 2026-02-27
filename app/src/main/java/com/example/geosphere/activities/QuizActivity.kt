@@ -3,12 +3,16 @@ package com.example.geosphere.activities
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.geosphere.R
@@ -417,12 +421,57 @@ class QuizActivity : BaseActivity() {
         binding.cardQuestion.visibility = if (show) View.GONE else View.VISIBLE
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.quiz_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             onBackPressedDispatcher.onBackPressed()
             return true
+        } else if (item.itemId == R.id.action_report) {
+            showReportDialog()
+            return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showReportDialog() {
+        if (currentQuestionIndex >= questions.size) return
+        
+        val question = questions[currentQuestionIndex]
+        
+        val input = EditText(this).apply {
+            hint = getString(R.string.report_reason_hint)
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(50, 20, 50, 20)
+            }
+        }
+
+        val container = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(input)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.report_question))
+            .setView(container)
+            .setPositiveButton(getString(R.string.submit)) { _, _ ->
+                val reason = input.text.toString().trim()
+                if (reason.isNotEmpty()) {
+                    lifecycleScope.launch {
+                        val userId = auth.currentUser?.uid ?: "anonymous"
+                        firebaseHelper.reportQuestion(question.id, question.questionText, reason, userId)
+                        Toast.makeText(this@QuizActivity, getString(R.string.report_submitted), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
     }
 
     @Suppress("DEPRECATION")

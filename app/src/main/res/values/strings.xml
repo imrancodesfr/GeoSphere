@@ -98,6 +98,10 @@
     <string name="delete_question">Delete Question</string>
     <string name="manage_categories">Manage Categories</string>
     <string name="view_reports">View Reports</string>
+    <string name="report_question">Report Question</string>
+    <string name="report_reason_hint">Why is this incorrect?</string>
+    <string name="cancel">Cancel</string>
+    <string name="report_submitted">Report submitted successfully.</string>
     <!-- Add these to your strings.xml -->
     <string name="question_placeholder">Question 1/20</string>
     <string name="timer_placeholder">30 seconds</string>

@@ -8,6 +8,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
+
+data class QuestionReport(
+    val id: String = UUID.randomUUID().toString(),
+    val questionId: String,
+    val questionText: String,
+    val reason: String,
+    val reportedByUserId: String,
+    val timestamp: Long = System.currentTimeMillis()
+)
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -72,10 +81,12 @@ class FirebaseHelper(private val context: Context) {
         // Auto-create local profile for existing Firebase Auth users
         val currentUser = auth.currentUser
         if (currentUser != null && currentUser.uid == userId) {
+            val finalEmail = currentUser.email ?: "user@geosphere.com"
+            val defaultName = if (finalEmail.contains("@")) finalEmail.substringBefore("@") else "Explorer"
             val newUser = User(
                 uid = currentUser.uid,
-                email = currentUser.email ?: "user@geosphere.com",
-                username = currentUser.displayName ?: "Explorer",
+                email = finalEmail,
+                username = currentUser.displayName ?: defaultName,
                 createdAt = System.currentTimeMillis()
             )
             saveLocalUser(newUser)
@@ -219,7 +230,22 @@ class FirebaseHelper(private val context: Context) {
         return try {
             val type = object : TypeToken<List<LeaderboardEntry>>() {}.type
             val leaderboardJson = prefs.getString("local_leaderboard", "[]")
-            val list: List<LeaderboardEntry> = gson.fromJson(leaderboardJson, type)
+            val rawList: List<LeaderboardEntry> = gson.fromJson(leaderboardJson, type)
+
+            // Dynamically fix "Explorer" or empty usernames using email if it's the current user
+            val list = rawList.map { entry ->
+                if (entry.username.isBlank() || entry.username == "Explorer") {
+                    val currentAuthUser = auth.currentUser
+                    if (currentAuthUser != null && currentAuthUser.uid == entry.userId) {
+                        val fallback = currentAuthUser.displayName ?: currentAuthUser.email?.substringBefore("@") ?: "Player"
+                        entry.copy(username = fallback)
+                    } else {
+                        entry.copy(username = "Player_${entry.userId.take(4)}")
+                    }
+                } else {
+                    entry
+                }
+            }
 
             val today = todayKey()
             val thisWeek = thisWeekKey()
@@ -288,6 +314,58 @@ class FirebaseHelper(private val context: Context) {
     suspend fun getAllMilestonesWithStatus(userId: String): Result<Pair<List<AchievementMilestone>, Int>> {
         val user = getLocalUser(userId) ?: return Result.failure(Exception("User not found locally"))
         return Result.success(Pair(AchievementMilestones.ALL, user.correctAnswers))
+    }
+
+    // ==========================
+    // REPORTED QUESTIONS
+    // ==========================
+
+    suspend fun reportQuestion(questionId: String, questionText: String, reason: String, userId: String): Result<Boolean> {
+        return try {
+            val type = object : TypeToken<MutableList<QuestionReport>>() {}.type
+            val reportsJson = prefs.getString("local_reports", "[]")
+            val reports: MutableList<QuestionReport> = gson.fromJson(reportsJson, type)
+
+            val report = QuestionReport(
+                questionId = questionId,
+                questionText = questionText,
+                reason = reason,
+                reportedByUserId = userId
+            )
+            
+            reports.add(report)
+            prefs.edit().putString("local_reports", gson.toJson(reports)).apply()
+            
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getReportedQuestions(): Result<List<QuestionReport>> {
+        return try {
+            val type = object : TypeToken<List<QuestionReport>>() {}.type
+            val reportsJson = prefs.getString("local_reports", "[]")
+            val reports: List<QuestionReport> = gson.fromJson(reportsJson, type)
+            Result.success(reports)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteReport(reportId: String): Result<Boolean> {
+        return try {
+            val type = object : TypeToken<MutableList<QuestionReport>>() {}.type
+            val reportsJson = prefs.getString("local_reports", "[]")
+            val reports: MutableList<QuestionReport> = gson.fromJson(reportsJson, type)
+            
+            reports.removeAll { it.id == reportId }
+            prefs.edit().putString("local_reports", gson.toJson(reports)).apply()
+            
+            Result.success(true)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 
     // ==========================

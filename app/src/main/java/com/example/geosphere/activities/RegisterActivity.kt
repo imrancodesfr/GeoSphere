@@ -12,6 +12,7 @@ import com.example.geosphere.databinding.ActivityRegisterBinding
 import com.example.geosphere.models.User
 import com.example.geosphere.utils.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -69,7 +70,14 @@ class RegisterActivity : BaseActivity() {
             lifecycleScope.launch {
                 try {
                     val result = auth.createUserWithEmailAndPassword(email, password).await()
-                    val userId = result.user?.uid ?: throw Exception("Registration failed")
+                    val firebaseUser = result.user ?: throw Exception("Registration failed")
+                    val userId = firebaseUser.uid
+
+                    // Save username to Firebase Auth Profile
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(username)
+                        .build()
+                    firebaseUser.updateProfile(profileUpdates).await()
 
                     // Create user in database
                     val user = User(

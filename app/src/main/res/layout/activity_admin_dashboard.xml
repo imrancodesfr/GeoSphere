@@ -17,13 +17,41 @@
             app:navigationIconTint="@android:color/white"
             app:title="@string/admin_dashboard" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/coming_soon"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewResults"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="24dp"
+                android:text="View Player Results"
+                android:textSize="18sp"
+                app:cornerRadius="16dp"
+                android:backgroundTint="@color/ocean_primary"
+                app:icon="@android:drawable/ic_menu_sort_by_size"
+                app:iconGravity="textStart"
+                app:iconPadding="16dp"
+                app:iconSize="32dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewReports"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="View Reported Questions"
+                android:textSize="18sp"
+                app:cornerRadius="16dp"
+                android:backgroundTint="@color/sunset_accent"
+                app:icon="@android:drawable/ic_dialog_alert"
+                app:iconGravity="textStart"
+                app:iconPadding="16dp"
+                app:iconSize="32dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

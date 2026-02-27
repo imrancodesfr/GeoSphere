@@ -57,7 +57,18 @@
 
         <activity
             android:name=".activities.AdminDashboardActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.AdminResultsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.AdminReportsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <!-- Other Activities -->
         <activity

@@ -113,7 +113,7 @@
                         android:layout_marginBottom="24dp"
                         tools:text="What is the capital of France?" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnOption1"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
@@ -127,9 +127,10 @@
                         android:gravity="center|start"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textAllCaps="false"
                         tools:text="Paris" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnOption2"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
@@ -143,9 +144,10 @@
                         android:gravity="center|start"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textAllCaps="false"
                         tools:text="London" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnOption3"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
@@ -159,9 +161,10 @@
                         android:gravity="center|start"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textAllCaps="false"
                         tools:text="Berlin" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnOption4"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
@@ -175,6 +178,7 @@
                         android:gravity="center|start"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textAllCaps="false"
                         tools:text="Madrid" />
 
                     <LinearLayout
